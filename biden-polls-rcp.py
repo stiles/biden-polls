@@ -4,6 +4,10 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+import os
+import datetime
+import smtplib
+from email.message import EmailMessage
 
 # Get latest Biden trends from Real Clear Politics
 
@@ -52,3 +56,20 @@ full_df["candidate"] = "President Biden"
 full_df['spread'] = full_df['spread'].round(2)
 
 full_df.to_csv('data/processed/biden_polling_averages.csv', index=False)
+    
+# get email and password from environment variables
+EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT')
+    
+# set up email content
+msg = EmailMessage()
+msg['Subject'] = 'New RCP scrape via Github Actions'
+msg['From'] = EMAIL_ADDRESS
+msg['To'] = EMAIL_RECIPIENT
+msg.set_content('Weeeeee')
+    
+# send email
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+    smtp.send_message(msg)
