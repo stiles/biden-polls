@@ -3,7 +3,7 @@ name: fetch-polling-averages
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 12 * * *' # runs at 12:00 UTC everyday 
+    - cron: '00 01,13 * * *' # runs at 6 am and 6 pm Pacific everyday 
 
 jobs:
   build:
