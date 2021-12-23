@@ -1,4 +1,4 @@
-name: scraper-san-juan-gobierno
+name: fetch-polling-averages
 
 on:
   schedule:
