@@ -56,6 +56,16 @@ full_df["candidate"] = "President Biden"
 full_df['spread'] = full_df['spread'].round(2)
 
 full_df.to_csv('data/processed/biden_polling_averages.csv', index=False)
+
+df_long = pd.melt(
+    full_df,
+    id_vars="date",
+    value_vars=["approve", "disapprove", "spread"],
+    var_name="value",
+    value_name="variable",
+)
+
+df_long.to_csv("data/processed/biden_polling_averages_long.csv", index=False)
     
 # get email and password from environment variables
 EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
