@@ -35,8 +35,6 @@ latest_df["date"] = pd.to_datetime(date).dt.date
 
 latest_df.drop(["poll", "sample", "begin", "end"], axis=1, inplace=True)
 
-latest_df.head()
-
 # Import historical polling average for Biden from RCP via Wayback Machine
 
 historical = pd.read_csv("data/processed/biden_history.csv")
@@ -55,6 +53,8 @@ full_df["candidate"] = "President Biden"
 
 full_df['spread'] = full_df['spread'].round(2)
 
+# email_string = full_df["candidate"] + " has a aproval rating of " + str(full_df['approve']) + "%\ on " + str(full_df["candidate"]) + ". His unfavorable rating is " + str(full_df["approve"]) + "%. That's a spread of " + str(full_df["spread"]) + ". Read more here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv."
+
 full_df.to_csv('data/processed/biden_polling_averages.csv', index=False)
 
 df_long = pd.melt(
@@ -64,6 +64,8 @@ df_long = pd.melt(
     var_name="value",
     value_name="variable",
 )
+
+
 
 df_long.to_csv("data/processed/biden_polling_averages_long.csv", index=False)
     
@@ -77,7 +79,7 @@ msg = EmailMessage()
 msg['Subject'] = 'New RCP scrape via Github Actions'
 msg['From'] = EMAIL_ADDRESS
 msg['To'] = EMAIL_RECIPIENT
-msg.set_content('Weeeeee')
+msg.set_content(f'There is a new Biden scrape. Read more here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv.')
     
 # send email
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
