@@ -1,5 +1,5 @@
 date,value,variable
-2021-12-22,approve,43.0
+2021-12-26,approve,43.0
 2021-12-21,approve,44.0
 2021-12-20,approve,44.0
 2021-12-19,approve,44.0
@@ -213,7 +213,7 @@ date,value,variable
 2021-01-30,approve,56.0
 2021-01-29,approve,56.0
 2021-01-27,approve,55.0
-2021-12-22,disapprove,53.0
+2021-12-26,disapprove,53.0
 2021-12-21,disapprove,53.0
 2021-12-20,disapprove,52.0
 2021-12-19,disapprove,50.0
@@ -427,7 +427,7 @@ date,value,variable
 2021-01-30,disapprove,36.0
 2021-01-29,disapprove,36.0
 2021-01-27,disapprove,37.0
-2021-12-22,spread,-10.0
+2021-12-26,spread,-10.0
 2021-12-21,spread,-9.0
 2021-12-20,spread,-8.0
 2021-12-19,spread,-6.0

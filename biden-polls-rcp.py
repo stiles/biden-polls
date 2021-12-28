@@ -5,7 +5,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import os
-import datetime
+import datetime as dt
 import smtplib
 from email.message import EmailMessage
 
@@ -65,12 +65,12 @@ df_long = pd.melt(
     value_name="variable",
 )
 
-date = latest_df.iloc[0, 0]
+date = latest_df.iloc[0, 0].strftime("%b. %d")
 approve = latest_df.iloc[0, 1].round(0)
 disapprove = latest_df.iloc[0, 2].round(0)
 spread = latest_df.iloc[0, 3].round(0)
 
-email = f"Weeeeeeeee! We've scraped President Biden's latest polling average from RealClear Politics. His approval rating is {approve}%. His is dissapprove rating is {disapprove}%. That's a spread of {spread} percentage points. Dive into the details here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv"
+email = f"Yes! We've scraped President Biden's latest polling average from RealClear Politics. As of {date}, his approval rating is {approve}%. Biden's dissapproval rating is {disapprove}%. That's a spread of {spread} percentage points. Get the latest data here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv"
 
 
 df_long.to_csv("data/processed/biden_polling_averages_long.csv", index=False)
@@ -82,7 +82,7 @@ EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT')
     
 # set up email content
 msg = EmailMessage()
-msg['Subject'] = 'New RCP scrape via Github Actions'
+msg['Subject'] = 'Github Actions: New Biden polling results!'
 msg['From'] = EMAIL_ADDRESS
 msg['To'] = EMAIL_RECIPIENT
 msg.set_content(f'{email}')
