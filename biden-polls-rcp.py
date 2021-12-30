@@ -51,11 +51,9 @@ full_df = full_df.sort_values("date", ascending=False)
 
 full_df["candidate"] = "President Biden"
 
-full_df['disapprove'] = full_df['disapprove'].round(0)
-full_df['approve'] = full_df['approve'].round(0)
-full_df['spread'] = full_df['spread'].round(0)
-
-full_df.to_csv('data/processed/biden_polling_averages.csv', index=False)
+full_df['disapprove'] = full_df['disapprove'].round(2)
+full_df['approve'] = full_df['approve'].round(2)
+full_df['spread'] = full_df['spread'].round(2)
 
 df_long = pd.melt(
     full_df,
@@ -66,14 +64,15 @@ df_long = pd.melt(
 )
 
 date = latest_df.iloc[0, 0].strftime("%b. %d")
-approve = latest_df.iloc[0, 1].round(0)
-disapprove = latest_df.iloc[0, 2].round(0)
-spread = latest_df.iloc[0, 3].round(0)
+approve = latest_df.iloc[0, 1].round(2)
+disapprove = latest_df.iloc[0, 2].round(2)
+spread = latest_df.iloc[0, 3].round(2)
 
 email = f"Yes! We've scraped President Biden's latest polling average from RealClear Politics. As of {date}, his approval rating is {approve}%. Biden's dissapproval rating is {disapprove}%. That's a spread of {spread} percentage points. Get the latest data here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv"
 
 
 df_long.to_csv("data/processed/biden_polling_averages_long.csv", index=False)
+full_df.to_csv('data/processed/biden_polling_averages.csv', index=False)
     
 # get email and password from environment variables
 EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
