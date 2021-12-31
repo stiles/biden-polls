@@ -28,6 +28,8 @@ src['datetime'] = pd.to_datetime(src['timestamp'])
 src['date'] = src['datetime'].dt.strftime('%m-%d-%y')
 src['date_display'] = src['datetime'].dt.strftime('%b. %d')
 
+src.drop_duplicates(subset='date', keep='last', inplace=True)
+
 for g in src["subgroup"].unique():
     src[src["subgroup"] == g].to_csv(
         f"data/processed/biden_approval_trend_{g.replace(' ', '_').lower()}.csv",
