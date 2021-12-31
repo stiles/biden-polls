@@ -14,8 +14,6 @@ url = "https://projects.fivethirtyeight.com/biden-approval-data/approval_topline
 
 src = pd.read_csv(url)
 
-src["candidate"] = "President Biden"
-
 src.rename(columns={'modeldate':'date', 'approve_estimate':'approve', 'disapprove_estimate':'disapprove'} , inplace=True)
 
 src['spread'] = src['approve'] - src['disapprove']
@@ -28,11 +26,11 @@ src['datetime'] = pd.to_datetime(src['timestamp'])
 src['date'] = src['datetime'].dt.strftime('%m-%d-%y')
 src['date_display'] = src['datetime'].dt.strftime('%b. %d')
 
-src.drop_duplicates(subset='date', keep='last', inplace=True)
+src.drop_duplicates(subset=['date', 'subgroup'], keep='last', inplace=True)
 
 for g in src["subgroup"].unique():
     src[src["subgroup"] == g].to_csv(
-        f"data/processed/biden_approval_trend_{g.replace(' ', '_').lower()}.csv",
+        f"data/processed/biden_approval_trend_538_{g.replace(' ', '_').lower()}.csv",
         index=False,
     )
 
@@ -52,10 +50,10 @@ for g in latest_df["subgroup"].unique():
         index=False,
     )
 
-date = latest_df.iloc[0, 13]
+date = latest_df.iloc[0, 12]
 approve = latest_df.iloc[0, 3].round(1)
 disapprove = latest_df.iloc[0, 6].round(1)
-spread = latest_df.iloc[0, 11].round(1)
+spread = latest_df.iloc[0, 10].round(1)
 
 email = f"Yes! We've scraped President Biden's latest polling average from 538. As of {date}, his approval rating is {approve}%. His dissapproval rating is {disapprove}%. That's a spread of {spread} percentage points. Get the latest data here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_approval_trend_all_polls.csv"
     
