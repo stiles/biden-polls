@@ -68,7 +68,7 @@ approve = latest_df.iloc[0, 1].round(2)
 disapprove = latest_df.iloc[0, 2].round(2)
 spread = latest_df.iloc[0, 3].round(2)
 
-email = f"Yes! We've scraped President Biden's latest polling average from RealClear Politics. As of {date}, his approval rating is {approve}%. Biden's dissapproval rating is {disapprove}%. That's a spread of {spread} percentage points. Get the latest data here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv"
+email = f"Yes! We've scraped President Biden's latest polling average from Real Clear Politics. As of {date}, his approval rating is {approve}%. Biden's dissapproval rating is {disapprove}%. That's a spread of {spread} percentage points. Get the latest data here: https://github.com/stiles/biden-polls/blob/main/data/processed/biden_polling_averages.csv"
 
 
 df_long.to_csv("data/processed/biden_polling_averages_long.csv", index=False)
@@ -81,7 +81,7 @@ EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT')
     
 # set up email content
 msg = EmailMessage()
-msg['Subject'] = 'Github Actions: New Biden polling results!'
+msg['Subject'] = 'Github Actions: New Biden polling results from RCP!'
 msg['From'] = EMAIL_ADDRESS
 msg['To'] = EMAIL_RECIPIENT
 msg.set_content(f'{email}')
