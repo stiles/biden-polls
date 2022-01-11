@@ -1,4 +1,5 @@
 president,subgroup,date,approve,approve_hi,approve_lo,disapprove,disapprove_hi,disapprove_lo,timestamp,spread,datetime,date_display
+Joe Biden,All polls,01-10-22,42.88,47.242636,38.516468,51.85,57.04866,46.654601,09:32:33 10 Jan 2022,-8.97,2022-01-10 09:32:33,Jan. 10
 Joe Biden,All polls,01-07-22,42.88,47.242636,38.516468,51.85,57.04866,46.654601,10:50:15  7 Jan 2022,-8.97,2022-01-07 10:50:15,Jan. 07
 Joe Biden,All polls,01-06-22,42.9,47.292676,38.501744,51.72,56.950278,46.496444,16:19:14  6 Jan 2022,-8.83,2022-01-06 16:19:14,Jan. 06
 Joe Biden,All polls,01-05-22,43.09,47.769845,38.416848,51.58,56.960299,46.200476,11:52:14  5 Jan 2022,-8.49,2022-01-05 11:52:14,Jan. 05
