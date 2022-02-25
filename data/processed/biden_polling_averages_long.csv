@@ -413,7 +413,7 @@ date,value,variable
 2021-02-26,disapprove,40.2
 2021-02-26,disapprove,40.2
 2021-02-24,disapprove,39.5
-2021-02-23,disapprove,53.3
+2021-02-23,disapprove,53.5
 2021-02-23,disapprove,39.5
 2021-02-20,disapprove,39.4
 2021-02-19,disapprove,39.3
@@ -629,7 +629,7 @@ date,value,variable
 2021-02-26,spread,13.8
 2021-02-26,spread,13.8
 2021-02-24,spread,14.5
-2021-02-23,spread,-11.8
+2021-02-23,spread,-12.0
 2021-02-23,spread,15.1
 2021-02-20,spread,14.9
 2021-02-19,spread,15.1
