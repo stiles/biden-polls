@@ -42,6 +42,7 @@ df_long = pd.melt(
     value_name="variable",
 )
 
+src['date'] = pd.to_datetime(src['date'])
 latest_df = src[src['date'] == src['date'].max()]
 
 for g in latest_df["subgroup"].unique():

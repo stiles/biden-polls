@@ -1,2 +1,2 @@
 president,subgroup,date,approve,approve_hi,approve_lo,disapprove,disapprove_hi,disapprove_lo,timestamp,spread,datetime,date_display
-Joe Biden,Voters,12-31-21,43.16,47.387769,38.934492,52.2,57.490743,46.911925,09:12:21 31 Dec 2021,-9.04,2021-12-31 09:12:21,Dec. 31
+Joe Biden,Voters,2022-03-01 00:00:00,41.07,45.153974,36.996022,53.24,58.275744,48.213769,09:39:26  1 Mar 2022,-12.17,2022-03-01 09:39:26,"March 01, 2022"
