@@ -22,7 +22,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
       - name: execute py script # run biden-polls-rcp.py to get the latest average
         env: 
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
@@ -30,15 +29,13 @@ jobs:
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
         run: |
           python biden-polls-538.py
-          python biden-polls-rcp.py
           
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "update data" -a --allow-empty
-
+          git commit -m "update data" -a --allow-empty --author="stiles <stiles@users.noreply.github.com>"
       - name: push changes
         uses: ad-m/github-push-action@master
         with:
